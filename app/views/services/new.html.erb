@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <h1>Add a new Service</h1>
+    <h2>Complete the following information</h2>
+
+    <%= simple_form_for [@service] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :hourly_rate %>
+    <%= f.submit %>
+    <% end %>
+  </div>
+</div>
