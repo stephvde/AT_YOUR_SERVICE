@@ -1,0 +1,19 @@
+
+
+
+<div class="container">
+  <div class="row">
+    <h1>What service do you need?</h1>
+    <br>
+    <%= form_tag services_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "search for a service"
+      %>
+    <% end %>
+    <br>
+    <%= link_to "back to bookings", bookings_path %>
+
+  </div>
+</div>
