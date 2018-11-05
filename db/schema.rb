@@ -10,10 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2018_11_05_141904) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
 
   create_table "booking_statuses", force: :cascade do |t|
     t.date "date"
@@ -29,6 +32,13 @@ ActiveRecord::Schema.define(version: 2018_11_05_141904) do
     t.bigint "booking_status_id"
     t.integer "price"
     t.integer "hours"
+
+  create_table "bookings", force: :cascade do |t|
+    t.text "description"
+    t.string "status"
+    t.integer "price"
+    t.integer "hours"
+    t.date "date"
     t.string "city"
     t.string "street"
     t.string "number"
@@ -57,6 +67,22 @@ ActiveRecord::Schema.define(version: 2018_11_05_141904) do
     t.index ["booking_id"], name: "index_reviews_on_booking_id"
   end
 
+  create_table "buyers", force: :cascade do |t|
+    t.boolean "status"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_buyers_on_user_id"
+  end
+
+  create_table "providers", force: :cascade do |t|
+    t.boolean "status"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_providers_on_user_id"
+  end
+
   create_table "services", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -75,7 +101,12 @@ ActiveRecord::Schema.define(version: 2018_11_05_141904) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+
   add_foreign_key "booking_statuses", "bookings"
   add_foreign_key "qas", "bookings"
   add_foreign_key "reviews", "bookings"
+
+  add_foreign_key "buyers", "users"
+  add_foreign_key "providers", "users"
+
 end
