@@ -26,10 +26,9 @@ ActiveRecord::Schema.define(version: 2018_11_05_142330) do
 
   create_table "bookings", force: :cascade do |t|
     t.text "description"
-    t.string "status"
+    t.bigint "booking_status_id"
     t.integer "price"
     t.integer "hours"
-    t.date "date"
     t.string "city"
     t.string "street"
     t.string "number"
@@ -37,6 +36,7 @@ ActiveRecord::Schema.define(version: 2018_11_05_142330) do
     t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["booking_status_id"], name: "index_bookings_on_booking_status_id"
   end
 
   create_table "buyers", force: :cascade do |t|
@@ -88,9 +88,13 @@ ActiveRecord::Schema.define(version: 2018_11_05_142330) do
   end
 
   create_table "services", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.text "description"
+    t.integer "hourly_rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "description"
+    t.index ["user_id"], name: "index_services_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -111,4 +115,5 @@ ActiveRecord::Schema.define(version: 2018_11_05_142330) do
   add_foreign_key "providers", "users"
   add_foreign_key "qas", "bookings"
   add_foreign_key "reviews", "bookings"
+  add_foreign_key "services", "users"
 end
