@@ -2,10 +2,9 @@ class CreateBookings < ActiveRecord::Migration[5.2]
   def change
     create_table :bookings do |t|
       t.text :description
-      t.string :status
+      t.references :booking_status
       t.integer :price
       t.integer :hours
-      t.date :date
       t.string :city
       t.string :street
       t.string :number
