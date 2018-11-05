@@ -6,5 +6,7 @@ Rails.application.routes.draw do
     resources :qas
     resources :booking_statuses
   end
+  resources :services
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
