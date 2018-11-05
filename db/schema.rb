@@ -10,13 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2018_11_05_135103) do
-
+ActiveRecord::Schema.define(version: 2018_11_05_141904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "booking_statuses", force: :cascade do |t|
+    t.date "date"
+    t.string "status"
+    t.bigint "booking_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_booking_statuses_on_booking_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.text "description"
+    t.bigint "booking_status_id"
+    t.integer "price"
+    t.integer "hours"
+    t.string "city"
+    t.string "street"
+    t.string "number"
+    t.integer "zip_code"
+    t.string "country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_status_id"], name: "index_bookings_on_booking_status_id"
+  end
+
+  create_table "qas", force: :cascade do |t|
+    t.text "question"
+    t.text "answer"
+    t.bigint "booking_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_qas_on_booking_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "service_rating"
+    t.integer "provider_rating"
+    t.bigint "booking_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_reviews_on_booking_id"
+  end
 
   create_table "services", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -36,4 +75,7 @@ ActiveRecord::Schema.define(version: 2018_11_05_135103) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "booking_statuses", "bookings"
+  add_foreign_key "qas", "bookings"
+  add_foreign_key "reviews", "bookings"
 end
