@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2018_11_05_142330) do
   enable_extension "plpgsql"
 
   create_table "booking_statuses", force: :cascade do |t|
+    t.date "date"
     t.string "status"
     t.bigint "booking_id"
     t.datetime "created_at", null: false
@@ -95,6 +96,7 @@ ActiveRecord::Schema.define(version: 2018_11_05_142330) do
   end
 
   create_table "services", force: :cascade do |t|
+
     t.bigint "user_id"
     t.string "name"
     t.bigint "category_id"
@@ -102,8 +104,7 @@ ActiveRecord::Schema.define(version: 2018_11_05_142330) do
     t.integer "hourly_rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_services_on_category_id"
-    t.index ["user_id"], name: "index_services_on_user_id"
+    t.text "description"
   end
 
   create_table "users", force: :cascade do |t|
@@ -126,6 +127,4 @@ ActiveRecord::Schema.define(version: 2018_11_05_142330) do
   add_foreign_key "providers", "users"
   add_foreign_key "qas", "bookings"
   add_foreign_key "reviews", "bookings"
-  add_foreign_key "services", "categories"
-  add_foreign_key "services", "users"
 end
