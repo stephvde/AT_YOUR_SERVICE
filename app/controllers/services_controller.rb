@@ -1,29 +1,29 @@
 class ServicesController < ApplicationController
-
   before_action :set_params, only: [:show, :destroy, :edit]
   def index
-    @services = Service.all
+    @services = policy_scope(Service).where(user: current_user)
   end
 
-  def myservices
-    @myservices = Service.where(user: current_user)
-    @user = current_user
-  end
+  # def my_services
+  #   @myservices = policy_scope(Service).where(user: current_user)
+  #     # authorize @myservices
+  # end
 
   def show
   end
 
   def new
-    @user = current_user
     @service = Service.new
     @categories = Category.all
+    authorize @service
   end
 
   def create
     @service = Service.new(service_params)
     @service.user = current_user
+    authorize @service
     if @service.save
-      redirect_to service_path(@service)
+      redirect_to services_path
     else
       render :new
     end
@@ -51,7 +51,8 @@ class ServicesController < ApplicationController
   end
 
   def set_params
-    @service = Service.find(params[:id])
+    @service = policy_scope(Service).find(params[:id])
+    authorize @service
   end
 
 end
