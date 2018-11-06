@@ -12,4 +12,6 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :categories, only: [:index]
+    # get "services/search", to: "services#search"
 end
