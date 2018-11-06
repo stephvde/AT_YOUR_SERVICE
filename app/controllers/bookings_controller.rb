@@ -1,23 +1,28 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.all
+    @bookings = policy_scope(Booking).where(user: current_user)
   end
 
   def show
     @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def edit
   end
 
-
-
   def new
+    @service = Service.find(params[:service_id])
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
+    binding.pry
     @booking = Booking.new(booking_params)
+    @booking.user = current_user
+    @booking.service = Service.find(params[:service_id])
+    authorize @booking
     if @booking.save
       redirect_to booking_path(@booking)
     else
@@ -42,6 +47,6 @@ class BookingsController < ApplicationController
   def booking_params
     # *Strong params*: You need to *whitelist* what can be updated by the user
     # Never trust user data!
-    params.require(:booking).permit(:description, :price, :hours, :data, :city, :street, :number, :zip_code, :country, :user_id, :serivce_id )
+    params.require(:booking).permit(:description, :price, :hours, :city, :street, :number, :zip_code, :country, :service_id )
   end
 end

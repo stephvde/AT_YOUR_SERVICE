@@ -2,8 +2,7 @@
 <p>Find me in app/views/bookings/index.html.erb</p>
 <ul>
 <% @bookings.each do |booking| %>
-<li> <%= link_to booking.description, booking_path(booking) %> scheduled for the <%= booking.date %>. Status: <%= booking.status.status %> </li>
+<li> <%= link_to booking.description, booking_path(booking) %> </li>
 <% end %>
 </ul>
 
-<%= link_to "new booking", new_booking_path %>
