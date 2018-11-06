@@ -2,12 +2,14 @@
   <div class="row">
     <h1>Add a new Service</h1>
     <h2>Complete the following information</h2>
-
-    <%= simple_form_for [@service] do |f| %>
+    <%= simple_form_for @service do |f| %>
     <%= f.input :name %>
+    <%= f.association :category, collection: @categories, prompt: "Choose a category"%>
     <%= f.input :description %>
     <%= f.input :hourly_rate %>
     <%= f.submit %>
     <% end %>
+    <br>
+    <%= link_to "back to my services", services_path %>
   </div>
 </div>
