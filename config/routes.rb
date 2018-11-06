@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   root to: 'pages#home'
 
@@ -13,5 +14,6 @@ Rails.application.routes.draw do
 
 
   resources :categories, only: [:index]
+  resources :profiles, except: [:index, :destroy]
     # get "services/search", to: "services#search"
 end
