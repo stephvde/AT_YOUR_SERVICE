@@ -1,5 +1,7 @@
 class Service < ApplicationRecord
-  validates :description, presence: true
+  validates :name, :description, :category, presence: true
   belongs_to :user
+  belongs_to :category
   has_many :bookings
+
 end

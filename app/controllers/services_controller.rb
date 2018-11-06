@@ -30,17 +30,19 @@ class ServicesController < ApplicationController
 
   def update
     @service.update(service_params)
+    redirect_to services_path
   end
 
   def destroy
     @service.destroy
+    redirect_to services_path
   end
 
 
   private
 
   def service_params
-    params.require(:service).permit(:description, :name, :hourly_rate)
+    params.require(:service).permit(:description, :name, :hourly_rate, :category)
   end
 
   def set_params
