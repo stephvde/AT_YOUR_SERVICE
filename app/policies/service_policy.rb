@@ -16,7 +16,6 @@ class ServicePolicy < ApplicationPolicy
   def update?
     record.user == user
   end
-
   # def my_services?
   #   true
   #   # record.user == user
