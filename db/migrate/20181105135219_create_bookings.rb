@@ -10,6 +10,7 @@ class CreateBookings < ActiveRecord::Migration[5.2]
       t.string :number
       t.integer :zip_code
       t.string :country
+      t.references :service
       t.timestamps
     end
   end
