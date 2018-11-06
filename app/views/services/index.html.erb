@@ -1,19 +1,19 @@
 <div class="container">
   <div class="row">
     <h1>All available services</h1>
-
-    <% @services.each do |service| %>
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/users/tgenaitay');">
-            <div class="card-category"> <%= service.category.name %> </div>
-              <div class="card-description">
-                <h2><%= service.name %></h2>
-              </div>
-
-              <%= link_to service.name, service_path(service), class:"card-link" %>
+    <div class="row">
+      <% @services.each do |service| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/users/tgenaitay');">
+          <div class="card-category"> <%= service.category.name %> </div>
+          <div class="card-description"> <h2><%= service.name %></h2> </div>
+          <%= link_to service.name, service_path(service), class:"card-link" %>
+        </div>
       </div>
-  </div>
-  <% end %>
-      <br>
+      <% end %>
+    </div>
+    <br>
     <%= link_to "Add new services", new_service_path %>
+  </div>
 </div>
+
