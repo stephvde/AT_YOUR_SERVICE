@@ -1,12 +1,19 @@
 <div class="container">
   <div class="row">
-    <h2>My services</h2>
-    <ul>
-      <% @services.each do |service| %>
-      <li><%= service.description %> <%= service.hourly_rate %></li>
-      <% end %>
-    </ul>
-    <br>
-    <%= link_to "Add new services", new_service_path %>
+    <h1>All available services</h1>
+
+    <% @services.each do |service| %>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path cocktail.photo %>');">
+            <div class="card-category"> service.category </div>
+              <div class="card-description">
+                <h2><%= service.name %></h2>
+              </div>
+              <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+              <a class="card-link" href="#" ></a>
+      </div>
   </div>
+  <% end %>
+      <br>
+    <%= link_to "Add new services", new_service_path %>
 </div>
