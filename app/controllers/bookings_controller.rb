@@ -5,6 +5,7 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    @status = @booking.booking_statuses
     authorize @booking
   end
 
@@ -18,12 +19,16 @@ class BookingsController < ApplicationController
   end
 
   def create
-    binding.pry
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.service = Service.find(params[:service_id])
     authorize @booking
+
     if @booking.save
+      @status = BookingStatus.new
+      @status.status = "new"
+      @status.booking_id = @booking.id
+      @status.save
       redirect_to booking_path(@booking)
     else
       render :new
