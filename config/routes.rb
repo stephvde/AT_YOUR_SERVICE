@@ -6,7 +6,10 @@ Rails.application.routes.draw do
     resources :qas
     resources :booking_statuses
   end
-  resources :services
+  resources :services do
+    collection do
+      get :my_services
+    end
+  end
 
-  get '/services/myservices', to: 'services#myservices'
 end

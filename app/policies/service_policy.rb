@@ -17,5 +17,9 @@ class ServicePolicy < ApplicationPolicy
     record.user == user
   end
 
+  # def my_services?
+  #   true
+  #   # record.user == user
+  # end
 
 end
