@@ -35,10 +35,12 @@ class ServicesController < ApplicationController
 
   def update
     @service.update(service_params)
+    redirect_to services_path
   end
 
   def destroy
     @service.destroy
+    redirect_to services_path
   end
 
 
