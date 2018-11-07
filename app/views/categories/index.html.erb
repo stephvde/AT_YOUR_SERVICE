@@ -1,47 +1,24 @@
 
 <div class="text-center padded features">
-  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://www.moneyearningideas.com/wp-content/uploads/make-money-as-a-dog-walker.jpg);">
+  <div class="bannersrc" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://www.moneyearningideas.com/wp-content/uploads/make-money-as-a-dog-walker.jpg);">
     <div class="banner-content">
       <div class="container">
         <h2>Search for a Service</h2>
         <div class="search-bar">
-          <form action="/categories" accept-charset="utf8" method="get" class="form-inline">
-            <input name="utf8" type="hidden" value="✓">
-            <input type="text" name="search" id="search-service" placeholder="Enter a service" class="form-control" autocomplete="off">
-            <div class="btn btn-search">
-            <input type="submit" name="commit" value="Search" data-disable-with="Search">
-            </div>
-          </form>
+          <%= form_tag categories_path, method: :get, :class => "form-inline" do %>
+            <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Look for a service"
+            %>
+            <%= submit_tag 'submit', class: "btn btn-primary"  %>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-
-<div class="container">
   <div class="row">
-    <h1>Search through the available services</h1>
-    <%= form_tag categories_path, method: :get do %>
-      <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "look for something"
-      %>
-    <% end %>
-  </div>
-  <div class="row">
-    <% if @result == "service"%>
-      <% @services.each do |service| %>
-      <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/users/tgenaitay');">
-          <div class="card-category"> <%= service.category.name %> </div>
-          <div class="card-description"> <h2><%= service.name %></h2> </div>
-          <%= link_to service.name, service_path(service), class:"card-link" %>
-        </div>
-      </div>
-      <% end %>
-    </div>
-    <% else %>
-        <h3>Explore our categories</h3>
+  <h3>Explore our categories</h3>
     <ul class="list-inline">
       <li><a href="#"><i class="fas fa-screwdriver"></i></a>
         <p>DIY</p></li>
@@ -66,6 +43,26 @@
       <li><a href="#"><i class="fas fa-ellipsis-h"></i></a>
         <p>Other</p></li>
     </ul>
-    <% end %>
   </div>
-</div>
+<!-- Show results -->
+  <div class="row">
+    <% if @result == "service"%>
+      <% @services.each do |service| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/users/tgenaitay');">
+          <div class="card-category"> <%= service.category.name %> </div>
+          <div class="card-description"> <h2><%= service.name %></h2> </div>
+          <%= link_to service.name, service_path(service), class:"card-link" %>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+   </div>
+
+         <!-- <form action="/categories" accept-charset="utf8" method="get" class="form-inline">
+            <input name="utf8" type="hidden" value="✓">
+            <input type="text" name="search" id="search-service" placeholder="Enter a service" class="form-control" autocomplete="off">
+            <div class="btn btn-search">
+            <input type="submit" name="commit" value="Search" data-disable-with="Search">
+            </div>
+          </form> -->
