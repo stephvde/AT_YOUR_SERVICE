@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :categories, only: [:index]
+  resources :categories, only: [:index, :show]
   resources :profiles, except: [:index, :destroy]
     # get "services/search", to: "services#search"
 end
