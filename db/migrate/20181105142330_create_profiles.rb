@@ -3,8 +3,8 @@ class CreateProfiles < ActiveRecord::Migration[5.2]
     create_table :profiles do |t|
       t.string :last_name
       t.string :first_name
-      t.text :street
-      t.string :number
+      t.text :address
+      t.text :zip_code
       t.string :city
       t.string :country
       t.string :bank_account
