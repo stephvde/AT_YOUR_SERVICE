@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(version: 2018_11_07_125847) do
     t.integer "price"
     t.integer "hours"
     t.string "city"
-    t.string "street"
-    t.string "number"
+    t.string "address"
     t.integer "zip_code"
     t.string "country"
+    t.datetime "date"
     t.bigint "service_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 2018_11_07_125847) do
   create_table "profiles", force: :cascade do |t|
     t.string "last_name"
     t.string "first_name"
-    t.text "street"
-    t.string "number"
+    t.text "address"
+    t.text "zip_code"
     t.string "city"
     t.string "country"
     t.string "bank_account"
