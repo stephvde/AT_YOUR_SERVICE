@@ -20,6 +20,7 @@
           <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
+
               <% if current_user.has_profile? %>
                 <%= link_to profile_path(current_user.profile.id) do %>
                   <i class='fa fa-user'></i> <%= t(".profile", default: "Profile") %>
@@ -29,12 +30,13 @@
                     <i class='fa fa-user'></i> <%= t(".profile", default: "Profile") %>
                 <% end %>
               <% end %>
-             </li>
+
+
+            </li>
             <li>
               <%= link_to new_service_path do %>
                 <i class="fa fa-cog"></i>  <%= t(".settings", default: "My bookings") %>
               <% end %>
-
             </li>
             <li>
               <%= link_to new_service_path do %>
