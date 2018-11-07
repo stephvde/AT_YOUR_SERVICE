@@ -1,4 +1,5 @@
 class Service < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
   validates :name, :description, :category, presence: true
   belongs_to :user
   belongs_to :category
@@ -9,4 +10,5 @@ class Service < ApplicationRecord
     using: {
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
+
 end

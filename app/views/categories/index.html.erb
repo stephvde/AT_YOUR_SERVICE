@@ -1,33 +1,84 @@
 
 <div class="text-center padded features">
-  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://www.moneyearningideas.com/wp-content/uploads/make-money-as-a-dog-walker.jpg);">
+  <div class="bannersrc" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://www.moneyearningideas.com/wp-content/uploads/make-money-as-a-dog-walker.jpg);">
     <div class="banner-content">
       <div class="container">
         <h2>Search for a Service</h2>
         <div class="search-bar">
-          <form action="/categories" accept-charset="utf8" method="get" class="form-inline">
-            <input name="utf8" type="hidden" value="✓">
-            <input type="text" name="search" id="search-service" placeholder="Enter a service" class="form-control" autocomplete="off">
-            <div class="btn btn-search">
-            <input type="submit" name="commit" value="Search" data-disable-with="Search">
-            </div>
-          </form>
+          <%= form_tag categories_path, method: :get, :class => "form-inline" do %>
+            <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Look for a service"
+            %>
+            <%= submit_tag 'submit', class: "btn btn-primary"  %>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-
-<div class="container">
   <div class="row">
-    <h1>Search through the available services</h1>
-    <%= form_tag categories_path, method: :get do %>
-      <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "look for something"
-      %>
-    <% end %>
+  <h3>Explore our categories</h3>
+    <ul class="list-inline">
+
+      <li><%= link_to category_path(1) do %>
+        <i class="fas fa-screwdriver"></i>
+        <% end %>
+        <p>DIY</p>
+      </li>
+      <li><%= link_to category_path(2) do %>
+        <i class="fas fa-paw"></i>
+        <% end %>
+        <p>Pets</p>
+      </li>
+      <li><%= link_to category_path(3) do %>
+        <i class="fas fa-broom"></i>
+        <% end %>
+        <p>Housekeeping</p>
+      </li>
+      <li><%= link_to category_path(4) do %>
+        <i class="fas fa-gift"></i>
+        <% end %>
+        <p>Events</p>
+      </li>
+      <li><%= link_to category_path(5) do %>
+        <i class="fas fa-leaf"></i>
+        <% end %>
+        <p>Gardening</p>
+      </li>
+      <li><%= link_to category_path(6) do %>
+        <i class="fas fa-car"></i>
+        <% end %>
+        <p>Transport</p>
+      </li>
+      <li><%= link_to category_path(7) do %>
+        <i class="fas fa-book"></i>
+        <% end %>
+        <p>Tutoring</p>
+      </li>
+      <li><%= link_to category_path(8) do %>
+        <i class="fas fa-tv"></i>
+        <% end %>
+        <p>IT</p>
+      </li>
+      <li><%= link_to category_path(9) do %>
+        <i class="fas fa-child"></i>
+        <% end %>
+        <p>Child care</p>
+      </li>
+      <li><%= link_to category_path(10) do %>
+        <i class="fas fa-briefcase-medical"></i>
+        <% end %>
+        <p>Medical</p>
+      </li>
+      <li><%= link_to category_path(11) do %>
+        <i class="fas fa-ellipsis-h"></i>
+        <% end %>
+        <p>Other</p>
+      </li>
+    </ul>
   </div>
+<!-- Show results -->
   <div class="row">
     <% if @result == "service"%>
       <% @services.each do |service| %>
@@ -39,33 +90,13 @@
         </div>
       </div>
       <% end %>
-    </div>
-    <% else %>
-        <h3>Explore our categories</h3>
-    <ul class="list-inline">
-      <li><a href="#"><i class="fas fa-screwdriver"></i></a>
-        <p>DIY</p></li>
-      <li><a href="#"><i class="fas fa-paw"></i></a>
-        <p>Pets</p></li>
-      <li><a href="#"><i class="fas fa-broom"></i></a>
-        <p>Housekeeping</p></li>
-      <li><a href="#"><i class="fas fa-gift"></i></a>
-        <p>Events</p></li>
-      <li><a href="#"><i class="fas fa-leaf"></i></a>
-        <p>Gardening</p></li>
-      <li><a href="#"><i class="fas fa-car"></i></a>
-        <p>Transport</p></li>
-      <li><a href="#"><i class="fas fa-book"></i></a>
-        <p>Tutoring</p></li>
-      <li><a href="#"><i class="fas fa-tv"></i></a>
-        <p>IT</p></li>
-      <li><a href="#"><i class="fas fa-child"></i></a>
-        <p>child care</p></li>
-      <li><a href="#"><i class="fas fa-briefcase-medical"></i></a>
-        <p>Medical</p></li>
-      <li><a href="#"><i class="fas fa-ellipsis-h"></i></a>
-        <p>Other</p></li>
-    </ul>
     <% end %>
-  </div>
-</div>
+   </div>
+
+         <!-- <form action="/categories" accept-charset="utf8" method="get" class="form-inline">
+            <input name="utf8" type="hidden" value="✓">
+            <input type="text" name="search" id="search-service" placeholder="Enter a service" class="form-control" autocomplete="off">
+            <div class="btn btn-search">
+            <input type="submit" name="commit" value="Search" data-disable-with="Search">
+            </div>
+          </form> -->

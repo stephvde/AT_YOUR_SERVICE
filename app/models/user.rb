@@ -9,9 +9,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :bookings
   has_many :services
+
   has_many :qas
 
-  def name
-    email
+  def has_profile?
+    profile.present?
   end
 end
