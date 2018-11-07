@@ -16,8 +16,14 @@ class ServicesController < ApplicationController
 
   def new
     @service = Service.new
-    @categories = Category.all
-    authorize @service
+
+    if current_user.has_profile?
+      @categories = Category.all
+      authorize @service
+    else
+      redirect_to new_profile_path, notice: 'Create your profile first'
+      authorize @service
+    end
   end
 
   def create
@@ -49,7 +55,7 @@ class ServicesController < ApplicationController
   private
 
   def service_params
-    params.require(:service).permit(:description, :name, :hourly_rate, :category_id)
+    params.require(:service).permit(:description, :name, :hourly_rate, :category_id, :photo)
   end
 
   def set_service

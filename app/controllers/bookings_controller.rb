@@ -6,6 +6,7 @@ class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
     @status = @booking.booking_statuses
+    @qa = @booking.qas.new
     authorize @booking
   end
 
@@ -13,9 +14,14 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @service = Service.find(params[:service_id])
     @booking = Booking.new
-    authorize @booking
+    if current_user.has_profile?
+      @service = Service.find(params[:service_id])
+      authorize @booking
+    else
+      redirect_to new_profile_path, notice: 'Create your profile first'
+      authorize @booking
+    end
   end
 
   def create
@@ -52,6 +58,6 @@ class BookingsController < ApplicationController
   def booking_params
     # *Strong params*: You need to *whitelist* what can be updated by the user
     # Never trust user data!
-    params.require(:booking).permit(:description, :price, :hours, :city, :street, :number, :zip_code, :country, :service_id )
+    params.require(:booking).permit(:description, :price, :hours, :city, :address, :zip_code, :country, :service_id )
   end
 end

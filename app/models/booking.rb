@@ -4,4 +4,6 @@ class Booking < ApplicationRecord
   has_many :qas
   has_many :reviews
   has_many :booking_statuses
+
+
 end

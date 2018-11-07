@@ -1,19 +1,26 @@
 <div class="container">
   <div class="row">
-    <h1>Create your profile</h1>
-    <h2>Complete the following information</h2>
-    <%= simple_form_for @profile do |f| %>
-    <%= f.input :last_name %>
-    <%= f.input :first_name %>
-    <p>Address</p>
-    <%= f.input :street %>
-    <%= f.input :number %>
-    <%= f.input :city %>
-    <%= f.input :country %>
-    <%= f.input :bank_account %>
-    <%= f.submit %>
-    <% end %>
-    <br>
-    <%= link_to "back to my services", services_path %>
+    <div class="col-md-4">
+      <h3>Create your profile</h3>
+        <%= image_tag "no_avatar.jpg", class: "profile-avatar" %>
+       <!--  Add a picture form -->
+    </div>
+    <div class="col-md-8">
+      <h2>Complete the following information</h2>
+      <%= simple_form_for @profile do |f| %>
+      <%= f.input :last_name %>
+      <%= f.input :first_name %>
+      <%= f.input :photo %>
+      <p>Address</p>
+      <%= f.input :address %>
+      <%= f.input :city %>
+      <%= f.input :zip_code %>
+      <%= f.input :country %>
+      <%= f.input :bank_account %>
+      <%= f.submit %>
+      <% end %>
+      <br>
+      <%= link_to "back to my services", services_path %>
+    </div>
   </div>
 </div>
