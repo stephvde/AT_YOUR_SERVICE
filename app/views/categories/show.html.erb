@@ -1,22 +1,21 @@
 <div class="container">
   <div class="row">
     <h1>Category - <%= @category.name %></h1>
+    <% @services.each do |service| %>
+    <div class="col-xs-12 col-sm-6 col-md-4">
 
-
-      <% @services.each do |service| %>
         <% if service.category_id == Category.find(params[:id]).id %>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('');">
-
-              <div class="card-category"><%= service.name %></div>
-
-              <div class="card-description">
-                <p>From: $ <%= service.hourly_rate %></p>
-              </div>
-              <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-              <%= link_to "", service_path(service), class: "card-link" %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('cl_image_tag service.photo, crop: :fill');">
+            <div class="card-category"><%= service.name %></div>
+            <div class="card-description">
+              <p>From: $ <%= service.hourly_rate %></p>
             </div>
-        <% end %>
-      <% end %>
+            <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+            <%= link_to "", service_path(service), class: "card-link" %>
           </div>
+        <% end %>
+
+    </div>
+    <% end %>
+  </div>
 </div>
