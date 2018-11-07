@@ -44,7 +44,12 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     @booking.update(booking_params)
-    redirect_to bookings_path
+    @status = BookingStatus.new
+    @status.status = "date changed"
+    @status.booking_id = @booking.id
+    @status.save
+    authorize @booking
+    redirect_to booking_path(@booking)
   end
 
   def destroy
@@ -58,6 +63,6 @@ class BookingsController < ApplicationController
   def booking_params
     # *Strong params*: You need to *whitelist* what can be updated by the user
     # Never trust user data!
-    params.require(:booking).permit(:description, :price, :hours, :city, :address, :zip_code, :country, :service_id )
+    params.require(:booking).permit(:description, :price, :hours, :date, :city, :address, :zip_code, :country, :service_id )
   end
 end

@@ -8,6 +8,11 @@
 <li>hourly rate: <%= @booking.service.hourly_rate %>€/hours</li>
 <li>number of hours: <%= @booking.hours %></li>
 <li>Total price : <%= @booking.service.hourly_rate * @booking.hours  %></li>
+<li>Scheduled appointment : <% if @booking.date.nil? then %>
+ "set appointment"
+ <% else %>
+ <%= @booking.date %>
+ <% end %></li>
   </div>
   <br>
 <!-- status -->
@@ -20,6 +25,7 @@
   </ol>
   </div>
 <!-- Q & A -->
+<div class="row">
 <h3>chat</h3>
 
   <% @booking.qas.each do |message| %>
@@ -31,7 +37,15 @@
 <h3>add message</h3>
 <%= simple_form_for [@booking, @qa] do |f| %>
     <%= f.input :message %>
-    <%= f.submit %>
+    <%= f.submit "send", class: 'btn btn-primary' %>
     <% end %>
 </div>
+<div class="row">
+<h3>schedule appointment</h3>
+<%= simple_form_for @booking do |f| %>
+    <%= f.input :date %>
+    <%= f.submit "set appointment", class: 'btn btn-primary' %>
+    <% end %>
+</div>
+
 
