@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :services
 
+  has_many :qas
+
   def has_profile?
     profile.present?
   end

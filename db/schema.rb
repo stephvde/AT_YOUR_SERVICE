@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_05_142330) do
+ActiveRecord::Schema.define(version: 2018_11_07_125847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "booking_statuses", force: :cascade do |t|
-    t.date "date"
     t.string "status"
     t.bigint "booking_id"
     t.datetime "created_at", null: false
@@ -26,7 +25,6 @@ ActiveRecord::Schema.define(version: 2018_11_05_142330) do
 
   create_table "bookings", force: :cascade do |t|
     t.text "description"
-    t.bigint "booking_status_id"
     t.integer "price"
     t.integer "hours"
     t.string "city"
@@ -34,9 +32,12 @@ ActiveRecord::Schema.define(version: 2018_11_05_142330) do
     t.string "number"
     t.integer "zip_code"
     t.string "country"
+    t.bigint "service_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["booking_status_id"], name: "index_bookings_on_booking_status_id"
+    t.index ["service_id"], name: "index_bookings_on_service_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "buyers", force: :cascade do |t|
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(version: 2018_11_05_142330) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -76,12 +78,13 @@ ActiveRecord::Schema.define(version: 2018_11_05_142330) do
   end
 
   create_table "qas", force: :cascade do |t|
-    t.text "question"
-    t.text "answer"
+    t.text "message"
     t.bigint "booking_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["booking_id"], name: "index_qas_on_booking_id"
+    t.index ["user_id"], name: "index_qas_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -94,9 +97,16 @@ ActiveRecord::Schema.define(version: 2018_11_05_142330) do
   end
 
   create_table "services", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.bigint "category_id"
+    t.text "description"
+    t.integer "hourly_rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "description"
+    t.string "photo"
+    t.index ["category_id"], name: "index_services_on_category_id"
+    t.index ["user_id"], name: "index_services_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -112,9 +122,14 @@ ActiveRecord::Schema.define(version: 2018_11_05_142330) do
   end
 
   add_foreign_key "booking_statuses", "bookings"
+  add_foreign_key "bookings", "services"
+  add_foreign_key "bookings", "users"
   add_foreign_key "buyers", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "providers", "users"
   add_foreign_key "qas", "bookings"
+  add_foreign_key "qas", "users"
   add_foreign_key "reviews", "bookings"
+  add_foreign_key "services", "categories"
+  add_foreign_key "services", "users"
 end
