@@ -9,6 +9,10 @@ class ServicePolicy < ApplicationPolicy
     return true
   end
 
+  def new?
+    true
+  end
+
   def destroy?
     record.user == user
   end

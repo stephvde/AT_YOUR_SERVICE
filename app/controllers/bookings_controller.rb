@@ -14,9 +14,14 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @service = Service.find(params[:service_id])
     @booking = Booking.new
-    authorize @booking
+    if current_user.has_profile?
+      @service = Service.find(params[:service_id])
+      authorize @booking
+    else
+      redirect_to new_profile_path, notice: 'Create your profile first'
+      authorize @booking
+    end
   end
 
   def create

@@ -16,8 +16,14 @@ class ServicesController < ApplicationController
 
   def new
     @service = Service.new
-    @categories = Category.all
-    authorize @service
+
+    if current_user.has_profile?
+      @categories = Category.all
+      authorize @service
+    else
+      redirect_to new_profile_path, notice: 'Create your profile first'
+      authorize @service
+    end
   end
 
   def create
