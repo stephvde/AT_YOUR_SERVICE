@@ -6,6 +6,7 @@ class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
     @status = @booking.booking_statuses
+    @qa = @booking.qas.new
     authorize @booking
   end
 

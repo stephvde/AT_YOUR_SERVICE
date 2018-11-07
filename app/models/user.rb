@@ -9,4 +9,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :bookings
   has_many :services
+  has_many :qas
+
+  def name
+    email
+  end
 end
