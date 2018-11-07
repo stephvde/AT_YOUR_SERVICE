@@ -18,7 +18,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    record.user == user || record.service.user == user
   end
 
 
