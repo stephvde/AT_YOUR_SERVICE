@@ -1,6 +1,11 @@
 <div class="container">
   <div class="row">
     <h1>My profile</h1>
+    <h3>Family Name: <%= @profile.last_name %></h3> <%= link_to 'Edit', edit_profile(current_user) %>
+    <h3>First Name: <%= @profile.first_name %></h3>
+    <h3>Address: <%= @profile.street %>, <%= @profile.number%> - <%= @profile.city%> <%= @profile.country %></h3>
+    <h3>Bank account: <%= @profile.bank_account %></h3>
+
   </div>
 </div>
 
