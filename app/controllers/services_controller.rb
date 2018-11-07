@@ -51,6 +51,11 @@ class ServicesController < ApplicationController
     redirect_to services_path
   end
 
+  def my_services
+    @services = current_user.services
+    authorize @services
+  end
+
 
   private
 

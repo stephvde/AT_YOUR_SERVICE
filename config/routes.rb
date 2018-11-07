@@ -6,12 +6,13 @@ Rails.application.routes.draw do
   resources :services do
     resources :bookings, only: [:new, :create]
   end
+  get 'my_services', to: "services#my_services"
   resources :bookings do
     resources :reviews, only: [:new, :create]
     resources :qas
     resources :booking_statuses
   end
-
+  get 'my_bookings', to: "bookings#my_bookings"
 
   resources :categories, only: [:index, :show]
   resources :profiles, except: [:index, :destroy]

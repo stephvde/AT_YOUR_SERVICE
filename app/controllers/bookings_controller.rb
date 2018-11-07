@@ -58,6 +58,11 @@ class BookingsController < ApplicationController
     redirect_to bookings_path
   end
 
+  def my_bookings
+    @bookings = current_user.bookings
+    authorize @bookings
+  end
+
   private
 
   def booking_params
