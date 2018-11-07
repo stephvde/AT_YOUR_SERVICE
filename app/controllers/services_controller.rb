@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  before_action :set_params, only: [:show, :destroy, :edit]
+  before_action :set_service, only: [:show, :destroy, :edit]
   def index
     @services = policy_scope(Service).where(user: current_user)
   end
@@ -10,6 +10,8 @@ class ServicesController < ApplicationController
   # end
 
   def show
+    @service = Service.find(params[:id])
+    authorize @service
   end
 
   def new
@@ -50,8 +52,8 @@ class ServicesController < ApplicationController
     params.require(:service).permit(:description, :name, :hourly_rate, :category_id)
   end
 
-  def set_params
-    @service = policy_scope(Service).find(params[:id])
+  def set_service
+    @service = Service.find(params[:id])
     authorize @service
   end
 

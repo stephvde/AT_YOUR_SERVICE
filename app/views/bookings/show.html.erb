@@ -1,2 +1,19 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+<div class="container">
+  <div class="row">
+
+<h1><%=  @booking.service.category.name  %></h1>
+<h3>contractor details</h3>
+<li>name: <%= @booking.service.name %></li>
+<li>hourly rate: <%= @booking.service.hourly_rate %>€/hours</li>
+<li>number of hours: <%= @booking.hours %></li>
+<li>Total price : <%= @booking.service.hourly_rate * @booking.hours  %></li>
+<br>
+<h3>status changes</h3>
+  <ol>
+    <% @status.each do |status| %>
+    <li> <%= status.status %>, changed @ <%= status.created_at %> </li>
+    <% end %>
+  </ol>
+  </div>
+</div>
+

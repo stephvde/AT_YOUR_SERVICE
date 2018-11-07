@@ -8,6 +8,7 @@ gem 'puma'
 gem 'rails', '5.2.1'
 gem 'redis'
 gem 'pundit'
+gem 'pg_search'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
@@ -23,6 +24,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'pry'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'listen', '~> 3.0.5'
