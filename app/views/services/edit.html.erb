@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+
+    <h1>Modify your service</h1>
+    <h2>Modify the following information</h2>
+    <%= simple_form_for @service do |f| %>
+    <%= f.input :name %>
+    <%= f.association :category, collection: @categories, prompt: "Choose a category"%>
+    <%= f.input :description %>
+    <%= f.input :hourly_rate %>
+    <%= f.input :photo %>
+    <%= f.submit %>
+    <% end %>
+    <br>
+    <%= link_to "back to my services", my_services_path %>
+  </div>
+</div>
