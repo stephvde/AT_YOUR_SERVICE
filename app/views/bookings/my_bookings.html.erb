@@ -2,4 +2,9 @@
   <div class="row">
     <h1>My bookings</h1>
   </div>
+    <ul>
+      <% @bookings.order(:date).each do |booking| %>
+        <li> <%= link_to booking.category.name, booking_path(booking) %> booked to <%= booking.service.user.profile.first_name %> <%= booking.service.user.profile.last_name %> for <%= booking.date %> at <%= booking.address %>, <%= booking.city %></li>
+      <% end %>
+    </ul>
 </div>
