@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   def index
     @bookings = policy_scope(Booking).where(user: current_user)
+    # @status = BookingStatus.all
   end
 
   def show
@@ -56,6 +57,11 @@ class BookingsController < ApplicationController
     @booking = booking.find(params[:id])
     @booking.destroy
     redirect_to bookings_path
+  end
+
+  def my_bookings
+    @bookings = current_user.bookings
+    authorize @bookings
   end
 
   private

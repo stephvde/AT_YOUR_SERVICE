@@ -5,7 +5,7 @@ class ProfilePolicy < ApplicationPolicy
     end
 
     def show?
-      true
+      record.user == user
     end
 
     def create?
@@ -13,7 +13,7 @@ class ProfilePolicy < ApplicationPolicy
     end
 
     def edit
-      true
+      record.user == user
     end
 
     def update?

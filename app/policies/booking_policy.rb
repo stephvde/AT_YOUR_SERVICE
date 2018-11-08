@@ -18,6 +18,10 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def show?
+    record.user == user || record.service.user == user
+  end
+
+  def my_bookings?
     true
   end
 
