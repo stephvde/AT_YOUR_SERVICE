@@ -3,10 +3,9 @@
 
   <div class="row">
     <div class="col-md-8 service-info">
-      <h1><%= @service.name %></h1>
-      <h3>Description</h3>
-      <p><%= @service.description %></p>
-      <p>Hourly rate: $ <%= @service.hourly_rate %></p>
+      <h1><%= @service.category.name %> : <%= @service.name %></h1>
+      <p>Description: <%= @service.description %></p>
+      <p>Hourly rate: <%= @service.hourly_rate %>€/h</p>
       <%= link_to "book now", new_service_booking_path(@service), class:"btn btn-primary" %>
     </div>
     <div class="col-md-4 service-profile">

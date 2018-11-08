@@ -1,15 +1,20 @@
 <div class="container">
   <div class="row">
-    <h1>Book a service</h1>
-    <h2>Complete the following information</h2>
+    <h1>Book the <%= @service.category.name %> service <%= @service.name %> from <%= @service.user.profile.first_name %> <%= @service.user.profile.last_name %></h1>
+    <h3>Complete the following information</h3>
     <%= simple_form_for [@service, @booking] do |f| %>
     <%= f.error_notification %>
-    <%= f.input :description %>
-    <%= f.input :hours %>
-    <%= f.input :city %>
+    <%= f.input  :description, label: "Detail your request"  %>
+    <%= f.label "When?" %>
+    <br>
+    <%= f.datetime_select :date, start_date: (Time.now)%>
+    <br>
+    <%= f.input  :hours, label: "For how many hours?" %>
+    <h3>Where is the work happening?</h3>
     <%= f.input :address %>
+    <%= f.input :city %>
     <%= f.input :zip_code %>
-    <%= f.submit %>
+    <%= f.submit "send booking request", class:"btn btn-primary" %>
     <% end %>
     <br>
     <%= link_to "back to my bookings", bookings_path %>

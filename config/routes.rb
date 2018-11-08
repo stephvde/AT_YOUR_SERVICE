@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :booking_statuses
   end
   get 'my_bookings', to: "bookings#my_bookings"
+  get 'my_service_bookings', to: "bookings#my_service_bookings"
 
   resources :categories, only: [:index, :show]
   resources :profiles, except: [:index, :destroy]

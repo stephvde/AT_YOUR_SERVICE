@@ -64,6 +64,12 @@ class BookingsController < ApplicationController
     authorize @bookings
   end
 
+  def my_service_bookings
+    @bookings = Booking.joins(:service).where(services: {user_id: current_user})
+    authorize @bookings
+  end
+
+
   private
 
   def booking_params

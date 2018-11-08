@@ -25,7 +25,9 @@ class BookingPolicy < ApplicationPolicy
     true
   end
 
-
+  def my_service_bookings?
+    true
+  end
 
 
 end
