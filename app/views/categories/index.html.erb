@@ -16,9 +16,9 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row row-no-margin">
   <h3>Explore our categories</h3>
-    <ul class="list-inline ">
+    <ul class="list-inline ul-no-margin">
       <li><%= link_to category_path(1) do %>
         <i class="fas fa-screwdriver"></i>
         <% end %>
@@ -77,7 +77,7 @@
     </ul>
   </div>
 <!-- Show results -->
-  <div class="row">
+  <div class="row row-no-margin">
     <% if @result == "service"%>
       <% @services.each do |service| %>
       <div class="col-xs-12 col-sm-6 col-md-4">
@@ -90,6 +90,8 @@
       <% end %>
     <% end %>
    </div>
+ </div>
+
 
          <!-- <form action="/categories" accept-charset="utf8" method="get" class="form-inline">
             <input name="utf8" type="hidden" value="✓">

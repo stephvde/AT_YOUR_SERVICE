@@ -2,12 +2,11 @@
 <div class="container">
   <div class="row">
     <h1>My service bookings</h1>
-
-</div>
-<ul>
-<% @bookings.order(:date).each do |booking| %>
-<li> <%= link_to booking.service.name, booking_path(booking) %> booked by <%= booking.user.profile.first_name %> <%= booking.user.profile.last_name %> for <%= booking.date %> </li>
-<% end %>
-</ul>
   </div>
+    <ul>
+      <% @bookings.order(:date).each do |booking| %>
+        <li> <%= link_to booking.service.name, booking_path(booking) %> booked by <%= booking.user.profile.first_name %> <%= booking.user.profile.last_name %> for <%= booking.date %> at <%= booking.address %>, <%= booking.city %></li>
+      <% end %>
+      </ul>
 </div>
+
