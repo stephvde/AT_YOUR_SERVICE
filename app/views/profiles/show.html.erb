@@ -1,20 +1,27 @@
+<div class="container-fluid">
+  <div class="row pic">
+    <div class="col-md-3 col-md-offset-5 text-center"> <%= cl_image_tag current_user.profile.photo, class: "profile-avatar img-circle" %>
+      <h2><%= @profile.first_name %>  <%= @profile.last_name %></h2>
+    </div>
+  </div>
+</div>
 <div class="container">
-  <div class="row">
-    <h1>My profile</h1>
-      <h3>Last Name</h3>
-      <%= @profile.last_name %>
-      <br>
-      <h3>First Name</h3>
-      <%= @profile.first_name %>
-      <br>
-      <h3>Address</h3>
-      <%= @profile.address %> <%= @profile.city %> <%= @profile.zip_code %>- <%= @profile.country %>
-      <br>
-      <h3>Bank account</h3>
-      <%= @profile.bank_account %>
-      <br>
-
-      <%= link_to 'Edit your profile', edit_profile_path(current_user.profile), class: 'btn btn-primary' %>
+  <div class="row table">
+    <div class="col-md-4 col-md-offset-4">
+      <ul class="list-inline">
+        <li class="fieldname">Address:</li>
+        <li class="fieldinput"><%= @profile.address %>, <%= @profile.zip_code %> <%= @profile.city %>, <%= @profile.country %></li>
+      </ul>
+    </div>
+    <div class="col-md-4 col-md-offset-4">
+      <ul class="list-inline">
+        <li class="fieldname">Bank account:</li>
+        <li class="fieldinput"><%= @profile.bank_account %></li>
+    </div>
+      <div class="col-md-4 col-md-offset-5">
+        <%= link_to 'Edit your profile', edit_profile_path(current_user.profile), class: 'btn btn-primary' %>
+      </div>
+    </ul>
   </div>
 </div>
 
