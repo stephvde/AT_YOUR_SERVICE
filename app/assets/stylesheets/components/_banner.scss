@@ -5,6 +5,7 @@
   height: calc(100vh - 70px);
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,6 +30,7 @@
   height: 60vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,6 +67,7 @@
   height: 50vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
