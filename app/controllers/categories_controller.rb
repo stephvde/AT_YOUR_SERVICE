@@ -24,7 +24,7 @@ class CategoriesController < ApplicationController
   def category_params
     # *Strong params*: You need to *whitelist* what can be updated by the user
     # Never trust user data!
-    params.require(:category).permit(:name)
+    params.require(:category).permit(:name, :photo)
   end
 
 end
