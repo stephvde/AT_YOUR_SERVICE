@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row pic">
-    <div class="col-md-3 col-md-offset-5 text-center"> <%= cl_image_tag current_user.profile.photo, class: "profile-avatar img-circle" %>
+    <div class="col-md-3 col-md-offset-5 text-center"> <%= cl_image_tag @profile.photo, class: "profile-avatar img-circle" %>
       <h2><%= @profile.first_name %>  <%= @profile.last_name %></h2>
     </div>
   </div>
