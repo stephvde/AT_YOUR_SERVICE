@@ -10,7 +10,7 @@
     </div>
     <div class="col-md-4 service-profile">
       <div class="user-info">
-        <%= image_tag "no_avatar.jpg", class: "profile-avatar" %>
+        <%= cl_image_tag @service.user.profile.photo, class: "profile-avatar" %>
         <h4><%= @service.user.profile.first_name %></h4>
         <p><%= @service.user.profile.city %></p>
       </div>
