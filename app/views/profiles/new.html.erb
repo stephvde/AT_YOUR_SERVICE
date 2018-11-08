@@ -1,17 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <h3>Create your profile</h3>
+    <div class="col-md-4 pic-square">
+      <h3>Upload your profile picture</h3>
         <%= image_tag "no_avatar.jpg", class: "profile-avatar" %>
        <!--  Add a picture form -->
     </div>
     <div class="col-md-8">
-      <h2>Complete the following information</h2>
+      <h2>Basic info</h2>
       <%= simple_form_for @profile do |f| %>
+      <%= f.input :photo %>
       <%= f.input :last_name %>
       <%= f.input :first_name %>
-      <%= f.input :photo %>
-      <p>Address</p>
+      <h4>Address</h4>
       <%= f.input :address %>
       <%= f.input :city %>
       <%= f.input :zip_code %>
@@ -20,7 +20,9 @@
       <%= f.submit %>
       <% end %>
       <br>
-      <%= link_to "back to my services", services_path %>
+      <div>
+        <%= link_to "Back to my services", services_path, class: "services-link" %>
+      </div>
     </div>
   </div>
 </div>
