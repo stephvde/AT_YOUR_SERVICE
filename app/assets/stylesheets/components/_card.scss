@@ -13,6 +13,9 @@
   top: 10px;
   width: 40px;
   border-radius: 50%;
+  border-size: 10px;
+  border-color: white;
+
 }
 .card-category {
   position: absolute;
@@ -31,7 +34,7 @@
 }
 .card-description p {
   font-size: 14px;
-  opacity: 0.7;
+  opacity: 0.9;
   font-weight: lighter;
 }
 .card-link {
@@ -59,7 +62,7 @@
 .fa-pen-square:hover {
   color: #43A953;
 }
-.fa-trash-alt {
+.red-trash {
   position: absolute;
   right: 10px;
   bottom: 10px;
@@ -67,6 +70,10 @@
   font-size: 20px;
 }
 
-.fa-trash-alt:hover {
+.red-trash:hover {
   color: #C56868;
+}
+
+.trash {
+  color: black;
 }

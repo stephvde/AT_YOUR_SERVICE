@@ -15,13 +15,13 @@
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%=cl_image_path service.photo %>');">
             <div class="card-category"><%= service.name %></div>
             <div class="card-description">
-              <p>From: $ <%= service.hourly_rate %></p>
+              <p>$ <%= service.hourly_rate %>/H</p>
             </div>
             <%= link_to edit_service_path(service) do %>
             <i class="fas fa-pen-square"></i>
             <% end %>
             <%= link_to service_path(service), method: :delete, data: { confirm: "Are you sure?" } do %>
-            <i class="fas fa-trash-alt"></i>
+            <i class="fas fa-trash-alt red-trash" class="trash"></i>
             <% end %>
             </div>
             </div>
