@@ -1,0 +1,18 @@
+.chat-window{
+  display: flex;
+  max-height: calc(100vh - 70px);
+  flex-direction: column;
+}
+
+.chat-title{
+}
+
+.chatbox{
+  overflow: scroll;
+  height: auto;
+  max-height: 430px;
+  flex-shrink: 1;
+}
+
+.chat-addmsg{
+}
