@@ -14,12 +14,14 @@
       <% @services.each do |service| %>
     <div class="col-xs-12 col-sm-6 col-md-4">
         <% if service.category_id == Category.find(params[:id]).id %>
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('cl_image_tag service.photo, crop: :fill');">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path service.photo %>');">
             <div class="card-category"><%= service.name %></div>
             <div class="card-description">
               <p>From: $ <%= service.hourly_rate %></p>
             </div>
-            <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+            <%= cl_image_tag service.user.profile.photo , class: "card-user" %>
+
+<!--             <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
             <%= link_to "", service_path(service), class: "card-link" %>
           </div>
         <% end %>
