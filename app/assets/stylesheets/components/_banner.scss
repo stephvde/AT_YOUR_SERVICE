@@ -22,6 +22,8 @@
   margin-bottom: 30px;
 }
 
+
+
 .bannersrc {
   margin-top: 70px;
   color: white;
@@ -46,6 +48,8 @@
   margin-bottom: 30px;
 }
 
+
+
 .bannerservice {
   margin-top: 70px;
   color: white;
@@ -57,6 +61,23 @@
   align-items: center;
   justify-content: center;
 }
+
+
+
+.banner-profile {
+  margin-top: 70px;
+  text-align: center;
+  height: 30vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
 
 .search-show {
   margin-top: 70px;
