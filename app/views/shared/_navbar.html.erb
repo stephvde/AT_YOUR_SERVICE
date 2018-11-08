@@ -19,7 +19,9 @@
         <div class="dropdown">
 
           <% if current_user.profile && current_user.profile.photo %>
-            <%= cl_image_path @profile.photo %>
+
+            <%= cl_image_tag current_user.profile.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", data: { toggle: "dropdown"} %>
+
           <% else %>
             <i class="fas fa-user-circle", class= "avatar dropdown-toggle", id= "navbar-wagon-menu", data-toggle= "dropdown"></i>
           <% end %>
