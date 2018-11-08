@@ -15,4 +15,6 @@ class User < ApplicationRecord
   def has_profile?
     profile.present?
   end
+
+
 end
