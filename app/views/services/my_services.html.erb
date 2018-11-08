@@ -1,6 +1,14 @@
 <div class="container">
   <div class="row">
-    <h1>My services</h1>
+    <div class="col-md-12 header-my-services">
+      <div class="col-md-4 content-header-my-services">
+      <h1 class="h1-my-services">My services</h1>
+      </div>
+      <div class="col-md-offset-4 col-md-4 text-right content-header-my-services">
+        <%= link_to 'New service', new_service_path, class: 'btn btn-add-service' %>
+      </div>
+    </div>
+
 
       <% @services.each do |service| %>
         <div class="col-xs-12 col-sm-6 col-md-4">
@@ -11,6 +19,9 @@
             </div>
             <%= link_to edit_service_path(service) do %>
             <i class="fas fa-pen-square"></i>
+            <% end %>
+            <%= link_to service_path(service), method: :delete, data: { confirm: "Are you sure?" } do %>
+            <i class="fas fa-trash-alt"></i>
             <% end %>
             </div>
             </div>
