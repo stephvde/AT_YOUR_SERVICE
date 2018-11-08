@@ -3,50 +3,61 @@
 
   <h1><%=  @booking.service.category.name  %></h1>
 <!-- booking details -->
-    <h3>contractor details</h3>
-      <li>name: <%= @booking.service.name %></li>
-      <li>hourly rate: <%= @booking.service.hourly_rate %>€/hours</li>
-      <li>number of hours: <%= @booking.hours %></li>
-      <li>Total price : <%= @booking.service.hourly_rate * @booking.hours  %></li>
-      <li>Scheduled appointment : <% if @booking.date.nil? then %>
-       "set appointment"
-      <% else %>
-      <%= @booking.date %>
-      <% end %></li>
-  </div>
-  <br>
-<!-- status -->
-  <div class="row">
-    <h3>status changes</h3>
-      <ol>
-        <% @status.each do |status| %>
-        <li> <%= status.status %>, changed @ <%= status.created_at %> </li>
-        <% end %>
-      </ol>
-  </div>
+    <div class="col-xs-12 col-md-6">
+      <div>
+        <h3>Booking details</h3>
+          <li>name: <%= @booking.service.name %></li>
+          <li>description: <%= @booking.description %></li>
+          <% if current_user == @booking.user %>
+            <li>contractor: <%= link_to @booking.service.user.profile.first_name + " " + @booking.service.user.profile.last_name, profile_path(@booking.service.user) %> </li>
+          <% else %>
+            <li>customer: <%= link_to @booking.user.profile.first_name + " " + @booking.user.profile.last_name, profile_path(@booking.user) %></li>
+          <% end %>
+          <li>hourly rate: <%= @booking.service.hourly_rate %>€/hours</li>
+          <li>number of hours: <%= @booking.hours %></li>
+          <li>Total price : <%= @booking.service.hourly_rate * @booking.hours  %></li>
+          <li>Scheduled appointment : <%= @booking.date %> </li>
+          <div class="form-group">
+          <%= simple_form_for @booking do |f| %>
+          <%= f.label "Change date?"  %> <br>
+          <%= f.datetime_select :date, start_year: Date.today.year %> <br>
+          <br>
+          <%= f.submit "Change date", class: 'btn btn-primary' %>
+          <% end %>
+          </div>
+      </div>
+      <!-- status -->
+      <div>
+        <h3>status changes</h3>
+          <ol>
+            <% @status.each do |status| %>
+            <li> <%= status.status %>  @ <%= status.created_at %> </li>
+            <% end %>
+          </ol>
+      </div>
+    </div>
 <!-- Q & A -->
-  <div class="row">
-    <h3>chat</h3>
-
-      <% @booking.qas.each do |message| %>
-        <% if !message.user.nil? %>
-          <p><%= message.message %> / written by <%= message.user.profile.first_name %> <%= message.user.profile.last_name %> on <%= message.created_at %></p>
-        <% end %>
-      <% end %>
-
-    <h3>add message</h3>
-    <%= simple_form_for [@booking, @qa] do |f| %>
-        <%= f.input :message %>
-        <%= f.submit "send", class: 'btn btn-primary' %>
-        <% end %>
-  </div>
-  <div class="row">
-    <h3>schedule appointment</h3>
-    <%= simple_form_for @booking do |f| %>
-        <%= f.input :date %>
-        <%= f.submit "set appointment", class: 'btn btn-primary' %>
-        <% end %>
+    <div class="col-xs-12 col-md-6">
+      <div class="chat-window">
+        <div class="chat-title">
+            <h3>Chat</h3>
+        </div>
+        <div class="chatbox">
+          <% @booking.qas.each do |message| %>
+            <% if !message.user.nil? %>
+              <p><%= message.message %> <br>
+              written by <%= message.user.profile.first_name %> <%= message.user.profile.last_name %> on <%= message.created_at %></p>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="chat-addmsg">
+          <h3>Post message</h3>
+          <%= simple_form_for [@booking, @qa] do |f| %>
+            <%= f.input :message %>
+            <%= f.submit "send", class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
-

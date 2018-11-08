@@ -33,7 +33,7 @@ class BookingsController < ApplicationController
 
     if @booking.save
       @status = BookingStatus.new
-      @status.status = "new"
+      @status.status = "booking request sent"
       @status.booking_id = @booking.id
       @status.save
       redirect_to booking_path(@booking)
