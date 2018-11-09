@@ -1,16 +1,17 @@
-<div class="form-wrapper">
-  <h1 class="newpass">Forgot your password?</h1>
-    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-      <%= f.error_notification %>
-        <div class="form-inputs">
-        <%= f.input :email,
-                    required: true,
-                    autofocus: true,
-                    input_html: { autocomplete: "email" } %>
-        </div>
-        <div class="form-actions">
-          <%= f.button :submit, "Send me reset password instructions", class: "form-button" %>
-        </div>
-    <% end %>
-  <h3 class="reglinks"><%= render "devise/shared/links", class: "passlinks" %></h3>
-</div>
+<div class="backgroundpass" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= asset_url("https://images.unsplash.com/photo-1519824145371-296894a0daa9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8d6d77a200077530beff1d2b4f600be7&auto=format&fit=crop&w=1650&q=80") %>)";>
+  <div class="form-wrapper">
+    <h1 class="newpass">Forgot your password?</h1>
+      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= f.error_notification %>
+          <div class="form-inputs">
+          <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" } %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Send me reset password instructions", class: "form-button" %>
+          </div>
+      <% end %>
+    <h3 class="reglinks"><%= render "devise/shared/links" %></h3>
+  </div>

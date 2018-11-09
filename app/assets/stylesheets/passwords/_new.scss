@@ -1,20 +1,27 @@
-// doesn't work yet
-// .body {
-//   background-image: url('assets/Pets.jpeg');
-// }
+.backgroundpass {
+  width: 100%;
+  height: calc(100vh - 135px);
+  background-position: center;
+}
 
 .form-wrapper {
-  background: rgba(200, 200, 200, 0.5);
+  // text-align: center;
+  padding-top: 20px;
   margin: 3em auto;
-  padding: 0 1em;
+  // padding: 0 1em;
   max-width: 370px;
   border-radius: 5px;
+  label {
+  color: white;
+  opacity: 0.8;
+  }
 }
 
 .newpass {
+  color: white;
   text-align: center;
   padding: 1em 0;
-  font-size: 36px;
+  font-size: 28px;
 }
 
 .reglinks {
@@ -22,33 +29,29 @@
   color: rgb(150, 150, 150);
   font-size: 15px;
   padding-bottom: 15px;
+  a {
+    color: rgb(150, 150, 150);
+    font-size: 15px;
+    padding-bottom: 15px;
+    &:hover {
+      opacity: 0.7;
+      text-decoration: none;
+    }
+  }
 }
-
-// These don't work...yet
-// .passlinks {
-//   text-align: center;
-//   color: rgb(150, 150, 150);
-//   font-size: 15px;
-//   padding-bottom: 15px;
-// }
-
-// .passlinks:hover {
-//   color: rgb(100, 100, 100);
-//   text-decoration: none;
-// }
 
 .button {
   text-align: center;
 }
 
 .form-button {
-  background-color: rgb(200, 200, 200);
-  border-color: RGB(150, 150, 150);
+  text-align: center;
+  background-color: #dad8d8;
+  border-color: RGB(100, 100, 100);
   border-radius: 15px;
-  color: rgb(150, 150, 150);
+  color: rgb(100, 100, 100);
 }
 
 .form-button:hover {
-  color: rgb(100, 100, 100);
-  border-color: rgb(100, 100, 100);
+  opacity: 0.7;
 }
