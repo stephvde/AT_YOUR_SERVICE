@@ -8,9 +8,9 @@
     <%= f.input :description %>
     <%= f.input :hourly_rate %>
     <%= f.input :photo %>
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-create-service' %>
     <% end %>
     <br>
-    <%= link_to "back to my services", my_services_path %>
+    <%= link_to "Back to My Services", my_services_path, class: 'btn btn-back-to-services' %>
   </div>
 </div>
