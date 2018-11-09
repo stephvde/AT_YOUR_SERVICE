@@ -6,10 +6,11 @@
       <h1><%= @service.category.name %> : <%= @service.name %></h1>
       <p>Description: <%= @service.description %></p>
       <p>Hourly rate: <%= @service.hourly_rate %>€/h</p>
-      <%= link_to "Book now", new_service_booking_path(@service), class:"btn btn-primary" %>
       <% if current_user == @service.user %>
-      <%= link_to "delete service", my_services_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
-      <%= link_to "edit service", service_path(@service), class: "btn btn-primary"%>
+        <%= link_to "delete service", my_services_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+        <%= link_to "edit service", edit_service_path(@service), class: "btn btn-primary"%>
+      <% else %>
+        <%= link_to "Book now", new_service_booking_path(@service), class:"btn btn-primary" %>
       <% end %>
     </div>
     <div class="col-md-4 service-profile">

@@ -9,22 +9,37 @@
       </div>
     </div>
 
-
-      <% @services.each do |service| %>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%=cl_image_path service.photo %>');">
-            <div class="card-category"><%= service.name %></div>
-            <div class="card-description">
-              <p>$ <%= service.hourly_rate %>/H</p>
-            </div>
-            <%= link_to edit_service_path(service) do %>
-            <i class="fas fa-pen-square"></i>
-            <% end %>
-            <%= link_to service_path(service), method: :delete, data: { confirm: "Are you sure?" } do %>
-            <i class="fas fa-trash-alt red-trash" class="trash"></i>
-            <% end %>
-            </div>
-            </div>
+      <% if @services.empty? %>
+        <div class="col-xs-12 text-center">
+          <br>
+          <br>
+          <br>
+          <%= "You provide no services yet"%>
+          <br>
+          <br>
+          <br>
+          <%= link_to 'Add a service', new_service_path, class: 'btn btn-primary btn-banner-home' %>
+          <br>
+          <br>
+          <br>
+        </div>
+      <% else %>
+        <% @services.each do |service| %>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%=cl_image_path service.photo %>');">
+              <div class="card-category"><%= service.name %></div>
+              <div class="card-description">
+                <p><%= service.hourly_rate %> €/H</p>
+              </div>
+              <%= link_to edit_service_path(service) do %>
+              <i class="fas fa-pen-square"></i>
+              <% end %>
+              <%= link_to service_path(service), method: :delete, data: { confirm: "Are you sure?" } do %>
+              <i class="fas fa-trash-alt red-trash" class="trash"></i>
+              <% end %>
+              </div>
+              </div>
+        <% end %>
       <% end %>
   </div>
 </div>

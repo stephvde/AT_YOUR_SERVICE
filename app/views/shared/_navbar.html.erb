@@ -11,7 +11,7 @@
 
       <!-- Links when logged in -->
 
-      <%= link_to "All Services", categories_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Search for a Service", categories_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "My Bookings", my_bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "My Service Bookings", my_service_bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Add a Service", new_service_path, class: "navbar-wagon-item navbar-wagon-link" %>
@@ -44,11 +44,7 @@
 
 
             </li>
-            <li>
-              <%= link_to my_bookings_path do %>
-                <i class="fa fa-cog"></i>  <%= t(".settings", default: "My bookings") %>
-              <% end %>
-            </li>
+
             <li>
               <%= link_to my_services_path do %>
                 <i class="fa fa-cog"></i>  <%= t(".settings", default: "My services") %>
