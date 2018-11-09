@@ -1,10 +1,37 @@
-<div class="container">
+<div class="container tex-center">
   <div class="row">
     <h1>My bookings</h1>
+
+    <% @bookings.order(:date).each do |booking| %>
+      <div class="grid">
+          <div class="card-service-bookings card-grid service-section img-background-size", style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%=cl_image_path booking.service.photo %>');">
+            <div class="card-category">
+              <%= booking.service.name %>
+            </div>
+          </div>
+
+        <div class="card-grid booker">
+
+          <%= cl_image_tag booking.service.user.profile.photo, class: "image-booker" %>
+          <h4><%= booking.service.user.profile.first_name %> <%= booking.service.user.profile.last_name %> </h4>
+
+        </div>
+        <div class="card-grid booking-date">
+          <h4>Booking Date</h4>
+          <p><%= booking.date %></p>
+        </div>
+        <div class="card-grid booking-address">
+          <h4>Booking Address</h4>
+          <p><%= booking.address %></p>
+          <p><%= booking.city %></p>
+        </div>
+
+        <%= link_to "See details", booking_path(booking), class: 'btn btn-see-details' %>
+
+
+      </div>
+    <% end %>
+
+
   </div>
-    <ul>
-      <% @bookings.order(:date).each do |booking| %>
-        <li> <%= link_to booking.category.name, booking_path(booking) %> booked to <%= booking.service.user.profile.first_name %> <%= booking.service.user.profile.last_name %> for <%= booking.date %> at <%= booking.address %>, <%= booking.city %></li>
-      <% end %>
-    </ul>
 </div>

@@ -12,8 +12,8 @@
 <div class="container">
   <div class="row">
       <% @services.each do |service| %>
+      <% if service.category_id == Category.find(params[:id]).id %>
     <div class="col-xs-12 col-sm-6 col-md-4">
-        <% if service.category_id == Category.find(params[:id]).id %>
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path service.photo %>');">
             <div class="card-category"><%= service.name %></div>
             <div class="card-description">
@@ -24,9 +24,10 @@
 <!--             <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
             <%= link_to "", service_path(service), class: "card-link" %>
           </div>
-        <% end %>
+
 
     </div>
+    <% end %>
     <% end %>
   </div>
 </div>
