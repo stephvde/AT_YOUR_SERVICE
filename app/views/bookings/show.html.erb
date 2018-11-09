@@ -39,6 +39,8 @@
 
           <% if @status.last.status != ("Job completed" || "booking canceled") %>
             <%= link_to "Cancel booking", booking_cancel_booking_path(@booking), class: 'btn btn-danger'  %>
+            <% end %>
+            <% if @status.last.status == "booking confirmed" %>
             <%= link_to "Job completed", booking_close_booking_path(@booking), class: 'btn btn-primary'  %>
           <% end %>
       </div>
