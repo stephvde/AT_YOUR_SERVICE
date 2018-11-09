@@ -43,8 +43,10 @@ class ServicesController < ApplicationController
   end
 
   def update
+    @service=Service.find(params[:id])
+    authorize @service
     @service.update(service_params)
-    redirect_to services_path
+    redirect_to my_services_path
   end
 
   def destroy
