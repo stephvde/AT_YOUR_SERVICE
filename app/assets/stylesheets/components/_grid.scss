@@ -1,0 +1,67 @@
+.grid {
+  display: grid;
+  grid-template-columns: 400px 1fr 1fr;
+  grid-template-rows: 97px 139px;
+  margin: 30px 30px;
+}
+
+.service-section {
+  grid-row: 1 / span 2 ;
+  grid-column: 1 / span 1 ;
+}
+
+.booker {
+  grid-row: 1 / span 2 ;
+  grid-column: 2 / span 1 ;
+}
+
+
+.btn-see-details {
+  border-size: 1px;
+  border-color: rgb(150, 150, 150);
+  border-radius: 20px;
+  width: 120px;
+  color: rgb(150, 150, 150);
+  margin-left: 20px;
+}
+
+.btn-see-details:hover {
+  background-color: rgb(180, 180, 180);
+  color: white;
+  border-color: rgb(180, 180, 180);
+}
+
+.card-grid {
+  background: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px;
+}
+.image-booker {
+  border-radius: 50%;
+  vertical-align: center;
+  width: 100px;
+}
+.booking-address {
+  grid-row: 2 / span 1 ;
+  grid-column: 3 / span 1 ;
+}
+.booking-date {
+  grid-row: 1 / span 1 ;
+  grid-column: 3 / span 1 ;
+}
+
+.card-service-bookings {
+
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  background-position: center;
+  color: white;
+  position: relative;
+}
+
+
