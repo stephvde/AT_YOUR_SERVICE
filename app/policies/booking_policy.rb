@@ -29,5 +29,15 @@ class BookingPolicy < ApplicationPolicy
     true
   end
 
+  def cancel_booking?
+    record.user == user || record.service.user == user
+  end
 
+  def close_booking?
+    record.user == user || record.service.user == user
+  end
+
+  def confirm_booking?
+    record.user == user || record.service.user == user
+  end
 end
