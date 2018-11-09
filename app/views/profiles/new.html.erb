@@ -1,28 +1,28 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-4 pic-square">
-      <h3>Upload your profile picture</h3>
-        <%= image_tag "no_avatar.jpg", class: "profile-avatar" %>
-       <!--  Add a picture form -->
-    </div>
-    <div class="col-md-8">
-      <h2>Basic info</h2>
-      <%= simple_form_for @profile do |f| %>
-      <%= f.input :photo %>
-      <%= f.input :first_name %>
-      <%= f.input :last_name %>
-      <h4>Address</h4>
-      <%= f.input :address %>
-      <%= f.input :city %>
-      <%= f.input :zip_code %>
-      <%= f.input :country %>
-      <%= f.input :bank_account %>
-      <%= f.submit %>
-      <% end %>
-      <br>
-      <div>
-        <%= link_to "Back to my services", services_path, class: "services-link" %>
+<div class="backgroundnewpro" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= asset_url("https://images.unsplash.com/photo-1527515673510-8aa78ce21f9b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=008bf9ac4d1216a5a6b8bd64ee0590d8&auto=format&fit=crop&w=2767&q=80") %>)";>
+  <div class="container new-profilect">
+    <div class="row pass-back">
+      <div class="col-md-4 pic-square">
+        <h3>Upload your profile picture</h3>
+          <%= image_tag "no_avatar.jpg", class: "profile-avatar" %>
+      </div>
+      <div class="col-md-8">
+        <h2>Basic info</h2>
+        <%= simple_form_for @profile do |f| %>
+        <%= f.input :photo %>
+        <%= f.input :first_name %>
+        <%= f.input :last_name %>
+        <h4>Address</h4>
+        <%= f.input :address %>
+        <%= f.input :city %>
+        <%= f.input :zip_code %>
+        <%= f.input :country %>
+        <%= f.input :bank_account %>
+        <%= f.submit class: "submit-pro" %>
+        <% end %>
+        <br>
+        <div>
+          <%= link_to "Back to Home", root_path, class: "btn home-buttonnew" %>
+        </div>
       </div>
     </div>
   </div>
-</div>

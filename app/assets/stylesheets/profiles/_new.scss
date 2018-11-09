@@ -2,12 +2,44 @@
   padding-left: 1px;
 }
 
-.services-link {
-  font-size: 20px;
-  text-align: center;
-  // color: rgb(150, 150, 150);
+.pass-back {
+  background-color: transparent;
+  color: white;
+  label {
+    opacity: 0.8;
+  }
 }
-.services-link:hover {
+
+.submit-pro {
+  background-color: #dad8d8;
+  border-color: RGB(100, 100, 100);
+  border-radius: 30px;
   color: rgb(100, 100, 100);
-  text-decoration: none;
+  &:hover {
+  opacity: 0.7;
+  }
 }
+
+.home-buttonnew {
+  background-color: #dad8d8;
+  border-color: RGB(100, 100, 100);
+  border-radius: 30px;
+  color: rgb(100, 100, 100);
+  &:hover {
+  opacity: 0.7;
+  }
+}
+
+// .newprof {
+//   text-align: center;
+//   a {
+//     color: rgb(150, 150, 150);
+//     font-size: 20px;
+//     padding-bottom: 15px;
+//     &:hover {
+//       color: rgb(100, 100, 100);
+//       text-decoration: none;
+//     }
+//   }
+// }
+
