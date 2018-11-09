@@ -1,0 +1,54 @@
+// This doesn't work yet
+.body {
+  background-image: url('assets/Pets.jpeg');
+}
+
+.form-wrapper {
+  background: rgba(200, 200, 200, 0.5);
+  margin: 3em auto;
+  padding: 0 1em;
+  max-width: 370px;
+  border-radius: 5px;
+}
+
+.signup {
+  text-align: center;
+  padding: 1em 0;
+  font-size: 36px;
+}
+
+.suplinks {
+  text-align: center;
+  color: rgb(150, 150, 150);
+  font-size: 15px;
+  padding-bottom: 15px;
+}
+
+// These don't work...yet
+// .devlinks {
+//   text-align: center;
+//   color: rgb(150, 150, 150);
+//   font-size: 15px;
+//   padding-bottom: 15px;
+// }
+
+// .devlinks:hover {
+//   color: rgb(100, 100, 100);
+//   text-decoration: none;
+// }
+
+.button {
+  text-align: center;
+}
+
+.form-button {
+  background-color: rgb(200, 200, 200);
+  border-color: RGB(150, 150, 150);
+  border-radius: 15px;
+  color: rgb(150, 150, 150);
+}
+
+.form-button:hover {
+  color: rgb(100, 100, 100);
+  border-color: rgb(100, 100, 100);
+}
