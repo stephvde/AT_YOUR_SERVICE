@@ -1,6 +1,8 @@
 // This doesn't work yet
-.body {
-  background-image: url('assets/Pets.jpeg');
+.backgroundreg {
+  width: 100%;
+  height: 80vh;
+  background-position: center;
 }
 
 .form-wrapper {
@@ -22,20 +24,17 @@
   color: rgb(150, 150, 150);
   font-size: 15px;
   padding-bottom: 15px;
+  a {
+    color: rgb(150, 150, 150);
+    font-size: 15px;
+    padding-bottom: 15px;
+    a:hover {
+      color: rgb(100, 100, 100);
+      text-decoration: none;
+    }
+  }
 }
 
-// These don't work...yet
-// .devlinks {
-//   text-align: center;
-//   color: rgb(150, 150, 150);
-//   font-size: 15px;
-//   padding-bottom: 15px;
-// }
-
-// .devlinks:hover {
-//   color: rgb(100, 100, 100);
-//   text-decoration: none;
-// }
 
 .button {
   text-align: center;
