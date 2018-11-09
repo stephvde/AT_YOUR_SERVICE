@@ -1,7 +1,13 @@
 <div class="container">
   <div class="row">
+    <% if @status.last.status == "Job completed" %>
+      <h1><%=  @booking.service.category.name  %> - Job Completed</h1>
+    <% elsif @status.last.status == "booking canceled" %>
+      <h1><%=  @booking.service.category.name  %> - Booking canceled</h1>
+    <% else %>
+      <h1><%=  @booking.service.category.name  %></h1>
+    <% end %>
 
-  <h1><%=  @booking.service.category.name  %></h1>
 <!-- booking details -->
     <div class="col-xs-12 col-md-6">
       <div>
@@ -17,14 +23,24 @@
           <li>number of hours: <%= @booking.hours %></li>
           <li>Total price : <%= @booking.service.hourly_rate * @booking.hours  %></li>
           <li>Scheduled appointment : <%= @booking.date %> </li>
-          <div class="form-group">
-          <%= simple_form_for @booking do |f| %>
-          <%= f.label "Change date?"  %> <br>
-          <%= f.datetime_select :date, start_year: Date.today.year %> <br>
-          <br>
-          <%= f.submit "Change date", class: 'btn btn-primary' %>
+          <% if @status.last.status == "date changed" || @status.last.status == "booking request sent"  %>
+            <div class="form-group">
+              <%= simple_form_for @booking do |f| %>
+                <%= f.label "Change date?"  %> <br>
+                <%= f.datetime_select :date, start_year: Date.today.year %> <br>
+                <br>
+                <%= f.submit "Change date", class: 'btn btn-primary' %>
+              <% end %>
+              <br>
+              <%= link_to "Confirm booking", booking_confirm_booking_path(@booking), class: 'btn btn-primary'  %>
+            </div>
           <% end %>
-          </div>
+
+
+          <% if @status.last.status != ("Job completed" || "booking canceled") %>
+            <%= link_to "Cancel booking", booking_cancel_booking_path(@booking), class: 'btn btn-danger'  %>
+            <%= link_to "Job completed", booking_close_booking_path(@booking), class: 'btn btn-primary'  %>
+          <% end %>
       </div>
       <!-- status -->
       <div>

@@ -69,6 +69,35 @@ class BookingsController < ApplicationController
     authorize @bookings
   end
 
+  def confirm_booking
+    @booking = Booking.find(params[:booking_id])
+    @status = BookingStatus.new
+    @status.status = "booking confirmed"
+    @status.booking_id = @booking.id
+    @status.save
+    authorize @booking
+    redirect_to booking_path(@booking)
+  end
+
+  def cancel_booking
+    @booking = Booking.find(params[:booking_id])
+    @status = BookingStatus.new
+    @status.status = "booking canceled"
+    @status.booking_id = @booking.id
+    @status.save
+    authorize @booking
+    redirect_to booking_path(@booking)
+  end
+
+  def close_booking
+    @booking = Booking.find(params[:booking_id])
+    @status = BookingStatus.new
+    @status.status = "Job completed"
+    @status.booking_id = @booking.id
+    @status.save
+    authorize @booking
+    redirect_to booking_path(@booking)
+  end
 
   private
 
